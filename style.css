@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&display=swap');
+
+:root {
+    --bg-dark: #051622;
+    --accent: #38bdf8;
+    --white: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg-dark); color: var(--white); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+.progress-container { position: fixed; top: 0; width: 100%; height: 5px; z-index: 1000; }
+.progress-bar { height: 100%; background: linear-gradient(to right, var(--accent), var(--white)); width: 0%; }
+
+.slide {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+    display: flex; justify-content: center; align-items: center;
+    opacity: 0; visibility: hidden;
+    background: radial-gradient(circle at center, #112d42 0%, #051622 100%);
+}
+
+.center-layout { width: 90%; max-width: 1000px; padding: 20px; text-align: center; }
+
+.glass-panel {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(56, 189, 248, 0.1) 100%);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 40px;
+    padding: 4rem;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+    position: relative;
+}
+
+.tag { color: var(--accent); letter-spacing: 5px; font-weight: 600; font-size: 0.7rem; text-transform: uppercase; }
+h2 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 200; margin: 1.5rem 0; color: var(--white); }
+p { font-size: 1.1rem; color: rgba(255,255,255,0.7); line-height: 1.9; margin-bottom: 2rem; }
+
+.whale-mask-container {
+    width: 250px; height: 150px; margin: 0 auto;
+    clip-path: ellipse(50% 30% at 50% 50%);
+    cursor: pointer; position: relative;
+    transition: transform 0.4s ease;
+}
+.whale-mask-container:hover { transform: scale(1.1) rotate(2deg); }
+.whale-img { width: 100%; height: 100%; object-fit: cover; }
+
+.water-spout {
+    position: absolute; top: 40%; left: 45%; width: 8px; height: 0;
+    background: linear-gradient(to top, var(--white), var(--accent));
+    opacity: 0; pointer-events: none;
+}
+
+.ocean-waves {
+    position: fixed; bottom: 0; width: 100%; height: 10vh;
+    z-index: 2; pointer-events: none;
+}
+.waves { width: 100%; height: 100%; }
+
+.parallax > use { animation: move-forever 20s cubic-bezier(.55,.5,.45,.5) infinite; }
+.parallax > use:nth-child(1) { animation-delay: -2s; animation-duration: 7s; }
+.parallax > use:nth-child(2) { animation-delay: -3s; animation-duration: 10s; }
+.parallax > use:nth-child(3) { animation-delay: -4s; animation-duration: 13s; }
+.parallax > use:nth-child(4) { animation-delay: -5s; animation-duration: 18s; }
+
+@keyframes move-forever {
+    0% { transform: translate3d(-90px,0,0); }
+    100% { transform: translate3d(85px,0,0); }
+}
